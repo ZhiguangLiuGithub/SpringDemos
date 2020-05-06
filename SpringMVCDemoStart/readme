@@ -1,0 +1,19 @@
+需求分析：
+    index.jsp 页面有一个超链接，当客户点击超链接时会发送一个请求，
+    那么 Java 后台程序需要一个类 ，它有个方法执行请求，并把请求转发到 “成功 ” jsp 页面。
+
+新建 Maven 项目，骨架构建为 webapps
+
+1.在 pom.xml 中导入依赖
+2.配置前端控制器——在 web.xml 中一个serlvet 类是 DispatcherServlet
+3.部署服务器端，即 Tomcat
+4.写 index.jsp
+5.写 Java 类——控制器，用到 @Controller、@RequestMapping
+6.写 SpringMVC.xml 导入相应名称空间，开启注解扫描、
+7.在 web.xml 中 使 servlet 加载 SpringMVC.xml 配置文件
+8.在 SpringMVC,xml 中配置视图解析器、开启注解支持
+
+
+
+
+
