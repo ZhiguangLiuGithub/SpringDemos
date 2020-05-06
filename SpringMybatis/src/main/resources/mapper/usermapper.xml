@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace非常重要，必须有。可以区分相同id-->
+<mapper namespace="test">
+
+    <!--建立映射关系：对象和数据库中的表-->
+
+    <!--需求1：根据ID进行查询-->
+    <select id="queryUserById" parameterType="int" resultType="com.jia.po.user">
+    select * from user where userid=#{value};
+</select>
+
+
+
+    <!--需求2：根据姓名模糊查询-->
+    <select id="queryUserByName" parameterType="java.lang.String" resultType="com.jia.po.user">
+            select * from user where username like #{value};
+    </select>
+
+
+    <!--需求3：添加元组-->
+    <insert id="addUser" parameterType="com.jia.po.user" >
+        insert into user(username,useraddr) value (#{userName},#{userAddr});
+    </insert>
+
+<!---需求4：更新元组-->
+    <update id="updateUser" parameterType="com.jia.po.user">
+        update user set username=#{userName} where userid=#{userID};
+    </update>
+
+    <!--需求5：删除元组-->
+    <delete id="deleteUser" parameterType="com.jia.po.user">
+            delete from user where userid=#{userID}
+    </delete>
+</mapper>
+

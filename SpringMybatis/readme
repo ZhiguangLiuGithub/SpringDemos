@@ -1,0 +1,16 @@
+Spring 框架集成 Mybatis
+1.在 pom.xml 中添加依赖
+2.配置     
+(1)Core Config file–>
+sqlMapConfig.xml
+
+po包存放用于持久化对象，新建一个类,将此类映射到之前在数据库中新建的表
+
+(2)mapper Config file–>
+xxxMapper.xml
+有<select> <insert> <update>标签
+
+3.添加日志信息log information到工程中，特指log4j.properties
+4.添加db.properties(driver,name,url.pass)到工程中
+
+在测试类中，需要通过 SqlSessionFactoryBuilder.build(inputStream) 获取 sqlSessionFactory
