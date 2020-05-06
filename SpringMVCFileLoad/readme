@@ -1,0 +1,7 @@
+1 文件上传的前提
+（1）form 表单的 enctype 的取值必须是 `multipart/form-data`，
+（默认值是 `appplication/x-www-form-urlencoded`）
+                                      enctype 是表单请求正文的类型。
+（2）method 属性取值必须是 `Post`
+（3）提供一个文件选择域：`<input type=:“file”/>`
+对应博客 https://blog.csdn.net/weixin_41750142/article/details/105912635
