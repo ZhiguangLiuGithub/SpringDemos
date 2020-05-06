@@ -1,0 +1,44 @@
+Spring是用来控制类与类之间关系的。
+
+Spring:是容器，是技术，也是框架。
+Spring的核心是IOC+AOP
+IOC(DI):Inversation Of Control(Dependency Injecction)
+控制反转/依赖注入。
+IOC伴随着DI。
+
+控制反转：
+本来，类A依赖于类B，即类B具有控制权，（因为如果不把方法给类A，类A就调不了），而Spring会将控制权反转，Spring具有控制权（就相当于刚刚的接口），能管理类A与类B之间的关系。
+ 先把类A交给Spring管理：
+1.在 resource 包下添加Spring核心配置文件 applicationContext
+2.在 pom.xml 中添加jar包
+<!--需要添加Spring的核心包==：
+  Spring core
+  Spring beans
+  spring context
+  spring aop-->
+3.用Spring 管理类和类之间的关系和初始化
+   (1)在 applicationContext.xml 中写 <bean name class>
+      在测试类中通过 applicationContext 的 getBean 获取对象
+                    ApplicationContext 接口的实现类有3种：
+                    ①ClassPathXmlApplicationContext：它可以加载类路径下的配置文件，要求配置文件必须在类路径下。否则无法加载。
+                    ②FileSystemApplicationContext：它可以加载磁盘任意路径下的配置文件（前提是有访问权限）。
+                    ③AnnotationConfigApplicationContext：单例对象适用。用于读取注解创建容器。
+4.注入属性
+使用 xml 配置文件：
+   (1)提供 set 方法，使用标签 <property> 注入
+   (2)通过构造方法注入，使用标签 <constructor-arg>
+
+      注意 Date 日期类 ，不同用于对于日期的格式定义是不同的，所以需要自行管理，在 Spring 中提供一个转化器。
+      转化器要继承 PropertyEditorSupport 类，并覆写 setAsText 方法。
+      通过Spring生成一个 CustomEditorConfigurer 类的对象，该对象有 customEditors 属性，
+                                                               以 java.util.Date 作为 key，以转换类作为 value
+
+使用 注解进行配置
+
+bean 的实例化
+（1）构造方法实例化
+（2）静态工厂方法实例化
+（3）实例工厂方法实例化
+     和静态工厂方法相似，只是实例工厂方法是通过一个已经在容器中的 Bean 通过其方法实例化一个新的 Bean
+
+
