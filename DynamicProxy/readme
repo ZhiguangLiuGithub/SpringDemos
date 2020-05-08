@@ -1,0 +1,29 @@
+ 动态代理的特点：
+     字节码随用随创建，随用随加载
+ 动态代理的作用：
+     不修改源码的基础上，增强方法
+ 动态代理的分类：
+       1.基于接口的
+             涉及的类：Proxy
+             提供者：JDK 官方
+             创建代理对象：使用 Proxy 类中的 newProxyInstance 方法，
+                          要求：被代理类至少实现一个接口，否则不能使用
+                          newProxyInstance 的参数：①ClassLoader 类加载器
+                                                   用于加载代理对象字节码，和被代理对象使用相同的类加载器
+                                                   ②Class[] 字节码数组
+                                                   用于让代理对象和被代理对象有相同方法
+                                                   ③InvocationHandler 用于提供增强的代码
+                                                   让写如何代理的,一般写该接口的实现类，通常情况下都是匿名内部类
+       2.基于子类的
+             涉及的类：Enhoncer
+             提供者：第三方 cglib 库
+             创建代理对象：使用 Enhoncer 类的 create 方法
+                          要求:被代理类不能是 final 类
+                          Enhoncer 的 create 方法，有 2 个参数：
+                          ①class 类型：
+                             指定被代理对象的指定字节码
+                          ②callback 类型：
+                             用于实现方法的增强，一般是该接口的子接口实现类：
+                                                 MethodInterceptor
+
+
